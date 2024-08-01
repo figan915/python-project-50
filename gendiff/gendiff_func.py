@@ -1,9 +1,3 @@
-import json
-
-file1 = json.load(open('gendiff/file1.json'))
-file2 = json.load(open('gendiff/file2.json'))
-
-
 def generate_diff(file1, file2):
     keys = set(file1.keys()).union(set(file2.keys()))
     diff = ["{"]
@@ -22,13 +16,3 @@ def generate_diff(file1, file2):
     diff.append("}")
 
     return str("\n".join(diff))
-
-
-print(generate_diff(file1, file2))
-
-
-
-
-
-
-
