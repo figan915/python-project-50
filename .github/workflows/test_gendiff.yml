@@ -24,6 +24,7 @@ jobs:
           pip install poetry
           make install
           pip install coverage
+          pip install pytest-cov
       - run: make lint
       - run: make test
       - name: Test and publish code coverage
