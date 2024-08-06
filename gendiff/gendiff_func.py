@@ -1,5 +1,7 @@
 def generate_diff(file1, file2):
-    keys = set(file1.keys()).union(set(file2.keys()))
+    key1 = set(file1.keys())
+    key2 = set(file2.keys())
+    keys = set(key1).union(set(key2))
     diff = ["{"]
 
     for key in sorted(keys):
@@ -15,4 +17,4 @@ def generate_diff(file1, file2):
             diff.append(f"  + {key}: {file2[key]}")
     diff.append("}")
 
-    return str("\n".join(diff))
+    return "\n".join(diff)
