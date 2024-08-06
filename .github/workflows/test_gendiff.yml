@@ -1,22 +1,32 @@
 name: gendiff_actions
 
 on:
-    push:
-        branches:
-            - '**'
-        tags:
-            - '**'
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: action/checkout@v3
-            - name: Install Dependencies
-              run: |
-                pip install poetry
-                make install
-            - run: make lint
-            - run: make test
+  build:
+    runs-on: ubuntu-latest
 
-              
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install  Poetry
+        run: |
+          pip install poetry
+
+      - name: Install dependencies
+        run: |
+          make install
+
+      - name: Lint the code
+        run: |
+          make lint
+
+      - name: Run tests
+        run: |
+          make test
