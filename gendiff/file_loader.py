@@ -8,4 +8,3 @@ def load_file(file_path):
             return json.load(file)
         elif file_path.endswith('.yaml') or file_path.endswith('.yml'):
             return yaml.safe_load(file)
-

@@ -2,6 +2,7 @@ from gendiff.gendiff_func import generate_diff
 import pytest
 from gendiff.file_loader import load_file
 
+
 @pytest.mark.parametrize(
     "file1_json, file2_json, file1_yaml, file2_yaml, correct_result", [
         ('./gendiff/tests/fixtures/file1.json',
@@ -9,7 +10,13 @@ from gendiff.file_loader import load_file
          './gendiff/tests/fixtures/file1.yaml',
          './gendiff/tests/fixtures/file2.yaml',
          './gendiff/tests/fixtures/correct_result_flat.txt')])
-def test_gendiff(file1_json, file2_json, file1_yaml, file2_yaml, correct_result):
+def test_gendiff(
+    file1_json,
+    file2_json,
+    file1_yaml,
+    file2_yaml,
+    correct_result,
+):
     file1_data = load_file(file1_json)
     file2_data = load_file(file2_json)
     file3_data = load_file(file1_yaml)
@@ -20,4 +27,3 @@ def test_gendiff(file1_json, file2_json, file1_yaml, file2_yaml, correct_result)
         diff_yaml = generate_diff(file3_data, file4_data).strip()
         assert expected_result == diff_json
         assert expected_result == diff_yaml
-
