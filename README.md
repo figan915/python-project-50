@@ -9,5 +9,8 @@
 
 ### [![Test Coverage](https://api.codeclimate.com/v1/badges/27eeae5c397c3a911be0/test_coverage)](https://codeclimate.com/github/figan915/python-project-50/test_coverage)
 
-### Вывод справки и сравнение плоских файлов json:
+### Вывод справки и сравнение плоских файлов .json:
 [![asciicast](https://asciinema.org/a/8qYeZ5rUpL2baDSxJtVinYiYb.svg)](https://asciinema.org/a/8qYeZ5rUpL2baDSxJtVinYiYb)
+
+### Сравнение файлов .yaml:
+[![asciicast](https://asciinema.org/a/DRkbv8mPrnRfeQiJawmWQ7Mn8.svg)](https://asciinema.org/a/DRkbv8mPrnRfeQiJawmWQ7Mn8)
