@@ -1,7 +1,6 @@
-from gendiff.parser import parser
+from gendiff.cli import parser
 from gendiff.gendiff_func import generate_diff
-from gendiff.file_loader import load_file
-
+from gendiff.file_parser import load_file
 
 __all__ = [
     'generate_diff',

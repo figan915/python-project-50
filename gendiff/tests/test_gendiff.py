@@ -1,6 +1,6 @@
 from gendiff.gendiff_func import generate_diff
 import pytest
-from gendiff.file_loader import load_file
+from gendiff.file_parser import load_file
 
 
 @pytest.mark.parametrize(
