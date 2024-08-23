@@ -21,7 +21,7 @@ def to_str(value, spaces_count=2):
     return f"{value}"
 
 
-def make_stylish_result(diff, spaces_count=2):
+def make_stylish_result(diff, spaces_count=2):  # noqa: C901
     indent = SEPARATOR * spaces_count
     lines = []
     for item in diff:
