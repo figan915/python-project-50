@@ -33,5 +33,5 @@ test:
 test-coverage:
 	#poetry run pytest --cov=gendiff --cov-report xml
 	poetry run coverage run -m pytest
-	poetry run coverage report
+	poetry run coverage --cov-report xml
 
