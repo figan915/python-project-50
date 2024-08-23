@@ -32,4 +32,5 @@ test:
 
 test-coverage:
 	poetry run coverage run -m pytest --cov-report xml
+	poetry run coverage lcov -o coverage/lcov.info
 
