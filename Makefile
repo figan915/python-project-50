@@ -1,8 +1,14 @@
 install:
 	poetry install
 
-gendiff:
-	poetry run gendiff
+diff:
+	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
+
+diff_plain:
+	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml -f plain
+
+diff_json:
+	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json -f json
 
 build:
 	poetry build
@@ -19,8 +25,13 @@ package-uninstall:
 lint:
 	poetry run flake8 gendiff
 
+lint_test:
+	poetry run flake8 tests
 test:
-	poetry run pytest gendiff
+	poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml
+	#poetry run pytest --cov=gendiff --cov-report xml
+	poetry run coverage run -m pytest
+	poetry run coverage report
+
