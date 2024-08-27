@@ -1,32 +1,37 @@
 import pytest
 from gendiff.generator import (
-    generate, for_add, for_delete, for_unchanged, for_modified, for_nested
+    generate,
+    generate_action_add,
+    generate_action_delete,
+    generate_action_unchanged,
+    generate_action_modified,
+    generate_action_nested
 )
 
 
 def test_for_add():
-    result = for_add('key1', 123)
+    result = generate_action_add('key1', 123)
     assert result == {'action': 'added',
                       'name': 'key1',
                       'new_value': 123}
 
 
 def test_for_delete():
-    result = for_delete('key2', 'old')
+    result = generate_action_delete('key2', 'old')
     assert result == {'action': 'deleted',
                       'name': 'key2',
                       'old_value': 'old'}
 
 
 def test_for_unchanged():
-    result = for_unchanged('key3', 'value3')
+    result = generate_action_unchanged('key3', 'value3')
     assert result == {'action': 'unchanged',
                       'name': 'key3',
                       'value': 'value3'}
 
 
 def test_for_modified():
-    result = for_modified('key4', 'old', 123)
+    result = generate_action_modified('key4', 'old', 123)
     assert result == {'action': 'modified',
                       'name': 'key4',
                       'new_value': 123,
@@ -36,7 +41,7 @@ def test_for_modified():
 def test_for_nested_dict():
     old_dict = {'a': 1, 'b': 2}
     new_dict = {'a': 1, 'b': 3, 'c': 4}
-    result = for_nested('key5', old_dict, new_dict)
+    result = generate_action_nested('key5', old_dict, new_dict)
     assert result == {
         'action': 'nested',
         'name': 'key5',

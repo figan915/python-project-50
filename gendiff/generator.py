@@ -1,4 +1,4 @@
-def for_add(key, value):
+def generate_action_add(key, value):
     return {
         'action': 'added',
         'name': key,
@@ -6,7 +6,7 @@ def for_add(key, value):
     }
 
 
-def for_delete(key, value):
+def generate_action_delete(key, value):
     return {
         'action': 'deleted',
         'name': key,
@@ -14,7 +14,7 @@ def for_delete(key, value):
     }
 
 
-def for_unchanged(key, value):
+def generate_action_unchanged(key, value):
     return {
         'action': 'unchanged',
         'name': key,
@@ -22,7 +22,7 @@ def for_unchanged(key, value):
     }
 
 
-def for_modified(key, value1, value2):
+def generate_action_modified(key, value1, value2):
     return {
         'action': 'modified',
         'name': key,
@@ -31,7 +31,7 @@ def for_modified(key, value1, value2):
     }
 
 
-def for_nested(key, value1, value2):
+def generate_action_nested(key, value1, value2):
     return {
         'action': 'nested',
         'name': key,
@@ -51,15 +51,15 @@ def generate(data1, data2):
         value2 = data2.get(key)
 
         if key in added:
-            diff.append(for_add(key, value2))
+            diff.append(generate_action_add(key, value2))
         elif key in deleted:
-            diff.append(for_delete(key, value1))
+            diff.append(generate_action_delete(key, value1))
         elif isinstance(value1, dict) and isinstance(value2, dict):
-            diff.append(for_nested(key, value1, value2))
+            diff.append(generate_action_nested(key, value1, value2))
         elif value1 != value2:
-            diff.append(for_modified(key, value1, value2))
+            diff.append(generate_action_modified(key, value1, value2))
         else:
-            diff.append(for_unchanged(key, value1))
+            diff.append(generate_action_unchanged(key, value1))
 
     sorted_diff = sorted(diff, key=lambda x: x['name'])
 
